@@ -10,6 +10,74 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .navbar {
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #007bff;
+            transition: color 0.3s;
+        }
+
+        .navbar-brand:hover {
+            color: #0056b3;
+        }
+
+        .dropdown-menu {
+            border: none;
+            border-radius: 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-item {
+            color: #333;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .container-lg,
+        .container {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .form-control {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #007bff;
+        }
+
+        .table {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -48,147 +116,148 @@
   </div>
 </nav>
 
-<div class="conainter-lg">
+<div class="container-lg mt-5">
     <div class="text-center">
         <h2>BSIT - 1st Year</h2>
     </div>
 
     <table class="table mt-3">
-  <thead>
-    <tr>
-      <th scope="col">Full Name</th>
-      <th scope="col">Address</th>
-      <th scope="col">Birthday</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php
-        $sql = "SELECT * FROM info";
-        $result = mysqli_query($conn, $sql);
+        <thead>
+            <tr>
+                <th scope="col">Full Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Birthday</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+                $sql = "SELECT * FROM info";
+                $result = mysqli_query($conn, $sql);
 
-        if(mysqli_num_rows($result) > 0){
-            while($row = mysqli_fetch_assoc($result)){
-                if($row['course'] === "BSIT" && $row['year'] === "1st"){
-                    $fullName = $row['lname'] . ", " . $row['fname'] . " " . $row['mname'];
-                    $address = $row['streetnum'] . " " . $row['streetname'] . " " . $row['brgy'] . " " . $row['city'];
-                    echo "<tr>";
-                    echo "<td>".$fullName."</td>";
-                    echo "<td>".$address."</td>";
-                    echo "<td>".$row['bday']."</td>";
-                    echo "</tr>";
-                } 
-            }
-        }
-    ?>
-  </tbody>
-</table>
-<div class="text-center mt-5">
+                if(mysqli_num_rows($result) > 0){
+                    while($row = mysqli_fetch_assoc($result)){
+                        if($row['course'] === "BSIT" && $row['year'] === "1st"){
+                            $fullName = $row['lname'] . ", " . $row['fname'] . " " . $row['mname'];
+                            $address = $row['streetnum'] . " " . $row['streetname'] . " " . $row['brgy'] . " " . $row['city'];
+                            echo "<tr>";
+                            echo "<td>".$fullName."</td>";
+                            echo "<td>".$address."</td>";
+                            echo "<td>".$row['bday']."</td>";
+                            echo "</tr>";
+                        } 
+                    }
+                }
+            ?>
+        </tbody>
+    </table>
+</div>
+
+<div class="container-lg mt-5">
+    <div class="text-center">
         <h2>BSIT - 2nd Year</h2>
     </div>
 
     <table class="table mt-3">
-  <thead>
-    <tr>
-      <th scope="col">Full Name</th>
-      <th scope="col">Address</th>
-      <th scope="col">Birthday</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php
-        $sql = "SELECT * FROM info";
-        $result = mysqli_query($conn, $sql);
+        <thead>
+            <tr>
+                <th scope="col">Full Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Birthday</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+                $sql = "SELECT * FROM info";
+                $result = mysqli_query($conn, $sql);
 
-        if(mysqli_num_rows($result) > 0){
-            while($row = mysqli_fetch_assoc($result)){
-                if($row['course'] === "BSIT" && $row['year'] === "2nd"){
-                    $fullName = $row['lname'] . ", " . $row['fname'] . " " . $row['mname'];
-                    $address = $row['streetnum'] . " " . $row['streetname'] . " " . $row['brgy'] . " " . $row['city'];
-                    echo "<tr>";
-                    echo "<td>".$fullName."</td>";
-                    echo "<td>".$address."</td>";
-                    echo "<td>".$row['bday']."</td>";
-                    echo "</tr>";
-                } 
-            }
-        }
-    ?>
-  </tbody>
-</table>
+                if(mysqli_num_rows($result) > 0){
+                    while($row = mysqli_fetch_assoc($result)){
+                        if($row['course'] === "BSIT" && $row['year'] === "2nd"){
+                            $fullName = $row['lname'] . ", " . $row['fname'] . " " . $row['mname'];
+                            $address = $row['streetnum'] . " " . $row['streetname'] . " " . $row['brgy'] . " " . $row['city'];
+                            echo "<tr>";
+                            echo "<td>".$fullName."</td>";
+                            echo "<td>".$address."</td>";
+                            echo "<td>".$row['bday']."</td>";
+                            echo "</tr>";
+                        } 
+                    }
+                }
+            ?>
+        </tbody>
+    </table>
 </div>
 
-<div class="text-center mt-5">
+<div class="container-lg mt-5">
+    <div class="text-center">
         <h2>BSIT - 3rd Year</h2>
     </div>
 
     <table class="table mt-3">
-  <thead>
-    <tr>
-      <th scope="col">Full Name</th>
-      <th scope="col">Address</th>
-      <th scope="col">Birthday</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php
-        $sql = "SELECT * FROM info";
-        $result = mysqli_query($conn, $sql);
+        <thead>
+            <tr>
+                <th scope="col">Full Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Birthday</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+                $sql = "SELECT * FROM info";
+                $result = mysqli_query($conn, $sql);
 
-        if(mysqli_num_rows($result) > 0){
-            while($row = mysqli_fetch_assoc($result)){
-                if($row['course'] === "BSIT" && $row['year'] === "3rd"){
-                    $fullName = $row['lname'] . ", " . $row['fname'] . " " . $row['mname'];
-                    $address = $row['streetnum'] . " " . $row['streetname'] . " " . $row['brgy'] . " " . $row['city'];
-                    echo "<tr>";
-                    echo "<td>".$fullName."</td>";
-                    echo "<td>".$address."</td>";
-                    echo "<td>".$row['bday']."</td>";
-                    echo "</tr>";
-                } 
-            }
-        }
-    ?>
-  </tbody>
-</table>
+                if(mysqli_num_rows($result) > 0){
+                    while($row = mysqli_fetch_assoc($result)){
+                        if($row['course'] === "BSIT" && $row['year'] === "3rd"){
+                            $fullName = $row['lname'] . ", " . $row['fname'] . " " . $row['mname'];
+                            $address = $row['streetnum'] . " " . $row['streetname'] . " " . $row['brgy'] . " " . $row['city'];
+                            echo "<tr>";
+                            echo "<td>".$fullName."</td>";
+                            echo "<td>".$address."</td>";
+                            echo "<td>".$row['bday']."</td>";
+                            echo "</tr>";
+                        } 
+                    }
+                }
+            ?>
+        </tbody>
+    </table>
 </div>
 
-<div class="text-center mt-5">
+<div class="container-lg mt-5">
+    <div class="text-center">
         <h2>BSIT - 4th Year</h2>
     </div>
 
     <table class="table mt-3">
-  <thead>
-    <tr>
-      <th scope="col">Full Name</th>
-      <th scope="col">Address</th>
-      <th scope="col">Birthday</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php
-        $sql = "SELECT * FROM info";
-        $result = mysqli_query($conn, $sql);
+        <thead>
+            <tr>
+                <th scope="col">Full Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Birthday</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+                $sql = "SELECT * FROM info";
+                $result = mysqli_query($conn, $sql);
 
-        if(mysqli_num_rows($result) > 0){
-            while($row = mysqli_fetch_assoc($result)){
-                if($row['course'] === "BSIT" && $row['year'] === "4th"){
-                    $fullName = $row['lname'] . ", " . $row['fname'] . " " . $row['mname'];
-                    $address = $row['streetnum'] . " " . $row['streetname'] . " " . $row['brgy'] . " " . $row['city'];
-                    echo "<tr>";
-                    echo "<td>".$fullName."</td>";
-                    echo "<td>".$address."</td>";
-                    echo "<td>".$row['bday']."</td>";
-                    echo "</tr>";
-                } 
-            }
-        }
-    ?>
-  </tbody>
-</table>
+                if(mysqli_num_rows($result) > 0){
+                    while($row = mysqli_fetch_assoc($result)){
+                        if($row['course'] === "BSIT" && $row['year'] === "4th"){
+                            $fullName = $row['lname'] . ", " . $row['fname'] . " " . $row['mname'];
+                            $address = $row['streetnum'] . " " . $row['streetname'] . " " . $row['brgy'] . " " . $row['city'];
+                            echo "<tr>";
+                            echo "<td>".$fullName."</td>";
+                            echo "<td>".$address."</td>";
+                            echo "<td>".$row['bday']."</td>";
+                            echo "</tr>";
+                        } 
+                    }
+                }
+            ?>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>

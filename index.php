@@ -1,6 +1,32 @@
 <?php
     include('database.php');
 
+    // Process the form submission
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $fname = $_POST["fname"];
+        $lname = $_POST["lname"];
+        $mname = $_POST["mname"];
+        $num = $_POST["num"];
+        $streetname = $_POST["streetname"];
+        $baranggay = $_POST["baranggay"];
+        $city = $_POST["city"];
+        $bday = $_POST["bday"];
+        $course = $_POST["course"];
+        $year = $_POST["year"];
+
+        $sql = "INSERT INTO info (fname, lname, mname, streetnum, streetname, brgy, city, bday, year, course) 
+                        VALUES ('$fname', '$lname', '$mname', '$num', '$streetname', '$baranggay',
+                        '$city', '$bday', '$year', '$course')";
+        try{
+            mysqli_query($conn, $sql);
+            echo "<div class='bg-success fw-bold p-3'>
+                    Register Successfully!
+                </div>";
+        }
+        catch(Exception $e){
+            echo "Error: " . $e->getMessage();
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -74,6 +100,7 @@
             background-color: #007bff;
         }
     </style>
+    
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -89,7 +116,7 @@
             Senior High
           </a>
           <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="gas.php">GAS</a></li>
+            <li><a class="dropdown-item" href="gas.php">GAS</a></li>
             <li><a class="dropdown-item" href="abm.php">ABM</a></li>
             <li><a class="dropdown-item" href="stem.php">STEM</a></li>
             <li><a class="dropdown-item" href="humms.php">HUMMS</a></li>
@@ -116,108 +143,73 @@
     <div class="text-center">
         <h2>Register A Student</h2>
     </div>
+    <div class="container my-5">
+        <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="POST">
+            <label class="fw-bold">Full Name:<span style='color:red;'>*</span></label>
+            <div class="row">
+                <div class="col-5">
+                     <input type="text" class="form-control" placeholder="First Name" name="fname" required> 
+                </div>
+                <div class="col-5">
+                    <input type="text" class="form-control" placeholder="Last Name" name="lname" required>
+                </div>
+                <div class="col-2">
+                    <input type="text" class="form-control" placeholder="Middle Name" name="mname" required>
+                </div>
+            </div>
+            <label class="fw-bold mt-3">Address:<span style='color:red;'>*</span></label>
+            <div class="row">
+                <div class="col-1">
+                    <input type="text" class="form-control" placeholder="#" name="num" required>
+                </div>
+                <div class="col-3">
+                    <input type="text" class="form-control" placeholder="Street Name" name="streetname" required>
+                </div>
+                <div class="col-4">
+                    <input type="text" class="form-control" placeholder="Baranggay" name="baranggay" required>
+                </div>
+                <div class="col-4">
+                    <input type="text" class="form-control" placeholder="City" name="city" required>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-4">
+                    <label class="fw-bold">Birthday:<span style='color:red;'>*</span></label>
+                    <input type="date" class="form-control" name="bday" required>
+                </div>
+                <div class="col-4">
+                    <label class="fw-bold">Course/Strand:<span style='color:red;'>*</span></label>
+                    <select class="form-select" aria-label="Default select example" name="course" required>
+                        <option selected>select strand/course </option>
+                        <option value="GAS">GAS</option>
+                        <option value="ABM">ABM</option>
+                        <option value="STEM">STEM</option>
+                        <option value="HUMMS">HUMMS</option>
+                        <option value="ICT">ICT</option>
+                        <option value="BSIT">BSIT</option>
+                        <option value="BSOA">BSOA</option>
+                        <option value="BSTM">BSTM</option>
+                        <option value="BSHM">BSHM</option>
+                    </select>
+                </div>
+                <div class="col-4">
+                    <label class="fw-bold">Year:<span style='color:red;'>*</span></label>
+                    <select class="form-select" aria-label="Default select example" name="year" required>
+                        <option selected>select year level </option>
+                        <option value="1st">1st year</option>
+                        <option value="2nd">2nd year</option>
+                        <option value="3rd">3rd year</option>
+                        <option value="4th">4th year</option>
+                        <option value="11">Grade 11</option>
+                        <option value="12">Grade 12</option>
+                    </select></div>
+            </div>
+            <div class="mt-5 d-flex justify-content-center">
+                <input type="submit" class="btn btn-outline-primary" value="Register">
+            </div>
+        </form>
+    </div>
 </div>
-
-<div class="container my-5">
-    <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="POST">
-        <label class="fw-bold">Full Name:<span style='color:red;'>*</span></label>
-        <div class="row">
-            <div class="col-5">
-                 <input type="text" class="form-control" placeholder="First Name" name="fname"> 
-            </div>
-            <div class="col-5">
-                <input type="text" class="form-control" placeholder="Last Name" name="lname">
-            </div>
-            <div class="col-2">
-                <input type="text" class="form-control" placeholder="Middle Name" name="mname">
-            </div>
-        </div>
-        <label class="fw-bold mt-3">Address:<span style='color:red;'>*</span></label>
-        <div class="row">
-            <div class="col-1">
-                <input type="text" class="form-control" placeholder="#" name="num">
-            </div>
-            <div class="col-3">
-                <input type="text" class="form-control" placeholder="Street Name" name="streetname">
-            </div>
-            <div class="col-4">
-                <input type="text" class="form-control" placeholder="Baranggay" name="baranggay">
-            </div>
-            <div class="col-4">
-                <input type="text" class="form-control" placeholder="City" name="city">
-            </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col-4">
-                <label class="fw-bold">Birthday:<span style='color:red;'>*</span></label>
-                <input type="date" class="form-control" name="bday">
-            </div>
-            <div class="col-4">
-                <label class="fw-bold">Course/Strand:<span style='color:red;'>*</span></label>
-                <select class="form-select" aria-label="Default select example" name="course">
-                    <option selected>select strand/course </option>
-                    <option value="GAS">GAS</option>
-                    <option value="ABM">ABM</option>
-                    <option value="STEM">STEM</option>
-                    <option value="HUMMS">HUMMS</option>
-                    <option value="ICT">ICT</option>
-                    <option value="BSIT">BSIT</option>
-                    <option value="BSOA">BSOA</option>
-                    <option value="BSTM">BSTM</option>
-                    <option value="BSHM">BSHM</option>
-                </select>
-            </div>
-            <div class="col-4">
-                <label class="fw-bold">Year:<span style='color:red;'>*</span></label>
-                <select class="form-select" aria-label="Default select example" name="year">
-                    <option selected>select year level </option>
-                    <option value="1st">1st year</option>
-                    <option value="2nd">2nd year</option>
-                    <option value="3rd">3rd year</option>
-                    <option value="4th">4th year</option>
-                    <option value="11">Grade 11</option>
-                    <option value="12">Grade 12</option>
-                </select></div>
-        </div>
-        <div class="mt-5 d-flex justify-content-center">
-            <input type="submit" class="btn btn-outline-primary" value="Register">
-        </div>
-
-    </form>
-</div>
-
 
 </body>
 </html>
-
-<?php
-    
-    
-
-     if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-        $fname = $_POST["fname"];
-        $lname = $_POST["lname"];
-        $mname = $_POST["mname"];
-        $num = $_POST["num"];
-        $streetname = $_POST["streetname"];
-        $baranggay = $_POST["baranggay"];
-        $city = $_POST["city"];
-        $bday = $_POST["bday"];
-        $course = $_POST["course"];
-        $year = $_POST["year"];
-
-        $sql = "INSERT INTO info (fname, lname, mname, streetnum, streetname, brgy, city, bday, year, course) 
-                        VALUES ('$fname', '$lname', '$mname', '$num', '$streetname', '$baranggay',
-                        '$city', '$bday', '$year', '$course')";
-        try{
-            mysqli_query($conn, $sql);
-            echo "<div class='bg-success fw-bold p-3'>
-                    Register Successfully!
-                </div>";
-        }
-        catch(error){
-            echo "error";
-        }
-     }
-?>
