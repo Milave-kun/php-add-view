@@ -163,7 +163,7 @@
                     <input type="text" class="form-control" placeholder="#" name="num" required>
                 </div>
                 <div class="col-3">
-                    <input type="text" class="form-control" placeholder="Street Name" name="streetname" required>
+                    <input type="text" class="form-control" placeholder="Street Name" name="streetname">
                 </div>
                 <div class="col-4">
                     <input type="text" class="form-control" placeholder="Baranggay" name="baranggay" required>
@@ -173,14 +173,17 @@
                 </div>
             </div>
             <div class="row mt-3">
+            
                 <div class="col-4">
-                    <label class="fw-bold">Birthday:<span style='color:red;'>*</span></label>
-                    <input type="date" class="form-control" name="bday" required>
+                 <label class="fw-bold">Birthday:<span style='color:red;'>*</span></label>
+                    <!-- Set initial value to today's date in "YYYY-MM-DD" format -->
+                    <input type="date" class="form-control" name="bday" style="text-transform: uppercase;" required>
                 </div>
+
                 <div class="col-4">
                     <label class="fw-bold">Course/Strand:<span style='color:red;'>*</span></label>
                     <select class="form-select" aria-label="Default select example" name="course" required>
-                        <option selected>select strand/course </option>
+                        <option selected>Select Strand/Course </option>
                         <option value="GAS">GAS</option>
                         <option value="ABM">ABM</option>
                         <option value="STEM">STEM</option>
@@ -195,7 +198,7 @@
                 <div class="col-4">
                     <label class="fw-bold">Year:<span style='color:red;'>*</span></label>
                     <select class="form-select" aria-label="Default select example" name="year" required>
-                        <option selected>select year level </option>
+                        <option selected>Select Year Level </option>
                         <option value="1st">1st year</option>
                         <option value="2nd">2nd year</option>
                         <option value="3rd">3rd year</option>
