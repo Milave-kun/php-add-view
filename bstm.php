@@ -56,79 +56,82 @@ if(isset($_POST['update_id'])) {
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-        }
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #800000; /* Reddish-brown color for the background */
+    }
 
-        .navbar {
-            padding: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            background-color: #fff;
-        }
+    .navbar {
+        padding: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background-color: #fff; /* White background color for the navbar */
+    }
 
-        .navbar-brand {
-            font-weight: bold;
-            color: #007bff;
-            transition: color 0.3s;
-        }
+    .navbar-brand {
+        font-weight: bold;
+        color: #800000; /* Maroon color for the navbar brand */
+        transition: color 0.3s;
+    }
 
-        .navbar-brand:hover {
-            color: #0056b3;
-        }
+    .navbar-brand:hover {
+        color: #cc4d29; /* Darker shade of maroon on hover */
+    }
 
-        .dropdown-menu {
-            border: none;
-            border-radius: 0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+    .dropdown-menu {
+        border: none;
+        border-radius: 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-        .dropdown-item {
-            color: #333;
-            transition: background-color 0.3s;
-        }
+    .dropdown-item {
+        color: #800000; /* Maroon color for dropdown items */
+        transition: background-color 0.3s;
+    }
 
-        .dropdown-item:hover {
-            background-color: #f8f9fa;
-        }
+    .dropdown-item:hover {
+        background-color: #800000; /* Darker shade of maroon on hover */
+        color: #fff; /* White color for text on hover */
+    }
+    .container-lg,
+    .container {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #fff; /* White background color for containers */
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
 
-        .container-lg,
-        .container {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
+    .form-control {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+     .btn {
+         padding: 10px 20px;
+         border-radius: 5px;
+         cursor: pointer;
+         transition: background-color 0.3s ease;
+    }
 
-        .form-control {
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .btn {
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn:hover {
-            background-color: #007bff;
-        }
+    .btn:hover {
+         background-color: #007bff;
+     }
         
-        /* Style for the delete button */
-        .btn-delete {
-            color: #fff;
-            background-color: #dc3545; /* Red color */
-            border-color: #dc3545; /* Red color */
-        }
+    /* Style for the delete button */
+    .btn-delete {
+         color: #fff;
+         background-color: #dc3545; /* Red color */
+         border-color: #dc3545; /* Red color */
+      }
 
-        /* Hover style for the delete button */
-        .btn-delete:hover {
-            background-color: #c82333; /* Darker red color on hover */
-            border-color: #bd2130; /* Darker red color on hover */
-        }
+    /* Hover style for the delete button */
+     .btn-delete:hover {
+        background-color: #c82333; /* Darker red color on hover */
+         border-color: #bd2130; /* Darker red color on hover */
+     }
+        .navbar-logo {
+        width: auto; /* Adjust the width as needed */
+        height: 45px; /* Adjust the height as needed */
+    }
     </style>
 </head>
 <body>
@@ -165,6 +168,18 @@ if(isset($_POST['update_id'])) {
         </li>
       </ul>
     </div>
+          <!-- Right side content -->
+          <div class="navbar-nav ml-auto justify-content-end">
+      <img src="http://localhost/php-add-view/Datamex.jpg" alt="Datamex College of Saint Adeline" class="navbar-logo me-2">
+      <span class="navbar-text me-4">
+        Datamex College of Saint Adeline
+      </span>
+      <a class="navbar-brand" href="index.php">Exit</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </div>
   </div>
 </nav>
 
